@@ -50,15 +50,15 @@ export default function Login(props) {
 
     return (
         <div>
-            <Restricted exactly to={ADMIN}>
+            <Restricted exactly to={ADMIN}> // Only `ADMIN`s can see this!
                 <AdminPanel />
             </Restricted>
             
-            <Restricted to={GUEST}>
+            <Restricted exactly to={GUEST}> // Only `GUEST`s can see this!
                 <LoginForm />
             </Restricted>
 
-            <Restricted to={USER}>
+            <Restricted to={USER}> // `USER`s can see this, but so can anybody with a higher rank!
                 <LogoutButton />
             </Restricted>
         </div>
@@ -68,11 +68,12 @@ export default function Login(props) {
 
 When the user sees the `Login` page above, they might one of the following things:
 
-* If the user has the role `GUEST`, they would only see the `LoginForm` component.
 * If the user has the role `USER`, they would only see the `LogoutButton` component.
+* If the user has the role `GUEST`, they would only see the `LoginForm` component.
+    * _Only_ `GUEST`s will ever be able to see this component--note the use of the `exactly` prop.
 * Only users of role `ADMIN` would see the `AdminPanel` component... 
     * _However_, `ADMIN`s can also see the `LogoutButton` component, because we defined their `rank` as `999`, which is __higher__ than the required role of `USER`, who has a rank of `2`.
-    * In addition, __only__ `ADMIN`s will ever be able to see the `AdminPanel` component, because we have used the `exactly` prop--the roles must be an exact match, and it doesn't matter what rank anybody has!
+
 
 For more examples and use cases, please see the API section below!
 
