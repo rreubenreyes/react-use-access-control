@@ -26,9 +26,9 @@ Before we start using this package in our React code, we should first define a f
 /* roles.js */
 import { AccessRoles } from 'react-use-access-control';
 
-export const ADMIN = AccessRoles.createRole({ name: 'admin' });
-export const USER = AccessRoles.createRole({ name: 'user' });
-export const GUEST = AccessRoles.createRole({ name: 'guest' });
+export const ADMIN = AccessRoles.createRole({ name: 'admin', rank: 999 });
+export const USER = AccessRoles.createRole({ name: 'user', rank: 2 });
+export const GUEST = AccessRoles.createRole({ name: 'guest', rank: 1 });
 ```
 
 Once we've done that, we're free to start using these roles throughout our application. Here's a basic example:
@@ -38,7 +38,8 @@ Once we've done that, we're free to start using these roles throughout our appli
 import React from 'react';
 import useAccessControl from 'react-use-access-control';
 
-import { USER, GUEST } from './roles';
+import { ADMIN, USER, GUEST } from './roles';
+import AdminPanel from './AdminPanel';
 import LoginForm from './LoginForm';
 import LogoutButton from './LogoutButton';
 
@@ -49,6 +50,10 @@ export default function Login(props) {
 
     return (
         <div>
+            <Restricted exactly to={ADMIN}>
+                <AdminPanel />
+            </Restricted>
+            
             <Restricted to={GUEST}>
                 <LoginForm />
             </Restricted>
@@ -61,7 +66,11 @@ export default function Login(props) {
 }
 ```
 
-When the user sees the `Login` page above, they will only be able to see a `LoginForm` component if their current access level is `GUEST`. Otherwise, such as when they're already logged in as a `USER`, they will see the `LogoutButton` component.
+When the user sees the `Login` page above, they might one of the following things:
+
+* If the user has the role `GUEST`, they would only see the `LoginForm` component.
+* If the user has the role `USER`, they would only see the `LogoutButton` component.
+* Only users of role `ADMIN` would see the `AdminPanel` component. _However_, `ADMIN`s can also see the `LogoutButton` component, because we defined their `rank` as `999`, which is __higher__ than the required role of `USER`, who has a rank of `2`.
 
 For more examples and use cases, please see the API section below!
 
