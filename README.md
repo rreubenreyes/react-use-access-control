@@ -70,7 +70,9 @@ When the user sees the `Login` page above, they might one of the following thing
 
 * If the user has the role `GUEST`, they would only see the `LoginForm` component.
 * If the user has the role `USER`, they would only see the `LogoutButton` component.
-* Only users of role `ADMIN` would see the `AdminPanel` component. _However_, `ADMIN`s can also see the `LogoutButton` component, because we defined their `rank` as `999`, which is __higher__ than the required role of `USER`, who has a rank of `2`.
+* Only users of role `ADMIN` would see the `AdminPanel` component... 
+    * _However_, `ADMIN`s can also see the `LogoutButton` component, because we defined their `rank` as `999`, which is __higher__ than the required role of `USER`, who has a rank of `2`.
+    * In addition, __only__ `ADMIN`s will ever be able to see the `AdminPanel` component, because we have defined it as "`Restricted exactly to {ADMIN}`" -- that is, the roles must be an exact match, and it doesn't matter what rank anybody has!
 
 For more examples and use cases, please see the API section below!
 
