@@ -72,7 +72,7 @@ When the user sees the `Login` page above, they might one of the following thing
 * If the user has the role `GUEST`, they would only see the `LoginForm` component.
     * _Only_ `GUEST`s will ever be able to see this component--note the use of the `exactly` prop.
 * Only users of role `ADMIN` would see the `AdminPanel` component... 
-    * _However_, `ADMIN`s can also see the `LogoutButton` component, because we defined their `rank` as `999`, which is __higher__ than the required role of `USER`, who has a rank of `2`.
+    * _However_, `ADMIN`s can also see the `LogoutButton` component, because we defined their `rank` as `999`, which is higher than the required role of `USER`, which has a rank of `2`.
 
 
 For more examples and use cases, please see the API section below!
