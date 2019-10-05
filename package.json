@@ -1,0 +1,32 @@
+{
+  "name": "react-use-access-control",
+  "version": "1.0.0",
+  "description": "Access control layer for React, built with the Hooks API",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./build/index.html",
+    "test": "./node_modules/jest --verbose"
+  },
+  "author": "Reuben Reyes",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "jest": "^24.9.0",
+    "parcel-bundler": "^1.12.3",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "dependencies": {
+    "lodash.isequal": "^4.5.0",
+    "lodash.isplainobject": "^4.0.6"
+  }
+}

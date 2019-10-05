@@ -1,0 +1,8 @@
+{
+    "extends": ["airbnb", "react"],
+    "rules": {
+        "indent": ["error", 4],
+        "no-underscore-dangle": "off",
+        "react/jsx-filename-extension": [0]
+    }
+}
