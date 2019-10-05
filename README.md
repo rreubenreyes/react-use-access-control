@@ -66,7 +66,7 @@ export default function Login(props) {
 }
 ```
 
-When the user sees the `Login` page above, they might one of the following things:
+When the user sees the `Login` page above, they might see one of the following things:
 
 * If the user has the role `USER`, they would only see the `LogoutButton` component.
 * If the user has the role `GUEST`, they would only see the `LoginForm` component.
