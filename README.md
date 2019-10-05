@@ -39,7 +39,8 @@ import React from 'react';
 import useAccessControl from 'react-use-access-control';
 
 import { USER, GUEST } from './roles';
-import TheRestOfYourApp from './the-rest-of-your-app';
+import LoginForm from './LoginForm';
+import LogoutButton from './LogoutButton';
 
 export default function Login(props) {
     const { currentAccessLevel } = props;
